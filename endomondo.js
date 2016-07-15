@@ -86,7 +86,7 @@ var login = function(email, password){
 
 		if( lines[ 0 ] == 'OK' )
 		{
-			console.log( 'Paired' );
+			// console.log( 'Paired' );
 
 			lines.forEach( function( element, index, array ){
 				var tokens = element.split( '=' );
@@ -121,7 +121,7 @@ exports.getWorkout= function(workout_id,authenticationtoken){
 	url += "authToken=" + authenticationtoken;
 	// url += 'fields=' + 'basic,points,pictures,tagged_users,points,playlist,interval';
 	url += "&workoutId=" + workout_id;
-	url+='&fields=basic,points,pictures,tagged_users,points,playlist,interval',
+	url+='&fields=basic,points,pictures,tagged_users,points,playlist,interval';
 	
 	return  getRequestPromise( { url: url })
 	.then( function( result ) 
@@ -129,9 +129,9 @@ exports.getWorkout= function(workout_id,authenticationtoken){
 				if('body' in result){
 					var body = result.body;
 
-					// console.log( body );
-					var data = JSON.parse( body );
-					// console.log( data );
+					console.log( body );
+					return  data = JSON.parse( body );
+					console.log( data );
 				}else{
 					return Promise.resolve(null);
 				}
@@ -169,7 +169,6 @@ exports.getWorkouts = function(authenticationtoken){
 	return getRequestPromise( { url: url })
 	.then(function( result ){
 		if('body' in result){
-
 
 			var body = result.body;
 			// console.log( body );
