@@ -16,7 +16,9 @@
   ],
   "dependencies": {
     "request": "2.53.0",
-    "uuidv5": "0.0.0"
+    "uuidv5": "0.0.0",
+    "underscore" : "*",
+    "bluebird"  : "*"
   },
   "devDependencies": {
   },
