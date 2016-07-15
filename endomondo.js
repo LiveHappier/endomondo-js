@@ -73,9 +73,7 @@ var login = function(email, password){
 	{
 		// console.log( error );
 		// console.log( incomingmessage );
-		if(result){
-			console.log( "RESULT : " +JSON.stringify(result) );
-		}
+
 		var body = result.body;
 		// if(incomingmessage){
 		// 	console.log(incomingmessage);
@@ -84,7 +82,7 @@ var login = function(email, password){
 
 		var lines = body.split( '\n' );
 
-		console.log( lines );
+		// console.log( lines );
 
 		if( lines[ 0 ] == 'OK' )
 		{
@@ -98,7 +96,7 @@ var login = function(email, password){
 				}
 			});
 
-			console.log( authenticationtoken );
+			
 			// Get all workouts ids
 			return Promise.resolve(authenticationtoken);
 
@@ -124,16 +122,16 @@ exports.getWorkout= function(workout_id,authenticationtoken){
 	// url += 'fields=' + 'basic,points,pictures,tagged_users,points,playlist,interval';
 	url += "&workoutId=" + workout_id;
 	url+='&fields=basic,points,pictures,tagged_users,points,playlist,interval',
-	console.log(url);
+	
 	return  getRequestPromise( { url: url })
 	.then( function( result ) 
 			{
 				if('body' in result){
 					var body = result.body;
 
-					console.log( body );
+					// console.log( body );
 					var data = JSON.parse( body );
-					console.log( data );
+					// console.log( data );
 				}else{
 					return Promise.resolve(null);
 				}
@@ -152,9 +150,9 @@ exports.getTrack = function(track_id,authenticationtoken){
 
 	var workoutresponse = getRequestPromise( { url: url }, function( error, incomingmessage, body ) 
 			{
-				console.log( body );
+				
 				var data = JSON.parse( body );
-				console.log( data );
+				
 			});
 
 
@@ -167,16 +165,16 @@ exports.getWorkouts = function(authenticationtoken){
 	url = URL_WORKOUTS + "/list?";
 	url += "authToken=" + authenticationtoken;
 	url += "&maxResults=" +  maxresults;
-	console.log( url );
+	
 	return getRequestPromise( { url: url })
 	.then(function( result ){
 		if('body' in result){
 
 
 			var body = result.body;
-			console.log( body );
+			// console.log( body );
 			var data = JSON.parse( body );
-			console.log( data );
+			// console.log( data );
 			// Take array
 			workouts_id = _.map(data.data,function(d){
 				return d.id;
