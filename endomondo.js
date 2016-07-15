@@ -129,9 +129,9 @@ exports.getWorkout= function(workout_id,authenticationtoken){
 				if('body' in result){
 					var body = result.body;
 
-					console.log( body );
+					// console.log( body );
 					return  data = JSON.parse( body );
-					console.log( data );
+					// console.log( data );
 				}else{
 					return Promise.resolve(null);
 				}
